@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
-import { handleInitialData} from '../actions/shared'
 import { connect } from 'react-redux'
+import { handleInitialData} from '../actions/shared'
+import Dashboard from './Dashboard.js'
+import LoadingBar from 'react-redux-loading'
+import Leaderboard from './Leaderboard'
+import AddPoll from './AddPoll'
 
 class App extends Component {
   componentDidMount () {
@@ -9,10 +13,18 @@ class App extends Component {
   render() {
     return (
       <div>
-        Starter Code.
+        <LoadingBar />
+        {this.props.loading === true ? null : 
+        <AddPoll /> }
       </div>
     )
   }
 }
 
-export default connect()(App)
+function mapStateToProps({ authedUser }) {
+  return {
+    loading: authedUser === null
+  }
+}
+
+export default connect(mapStateToProps)(App)
