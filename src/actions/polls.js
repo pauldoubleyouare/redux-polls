@@ -7,7 +7,7 @@ export const ADD_POLL = 'ADD_POLL'
 function addPoll (poll) {
   return {
     type: ADD_POLL,
-    poll
+    poll,
   }
 }
 
@@ -16,7 +16,6 @@ export function handleAddPoll (poll) {
     const { authedUser } = getState()
 
     dispatch(showLoading())
-
     return savePoll({
       ...poll,
       author: authedUser
@@ -29,6 +28,6 @@ export function handleAddPoll (poll) {
 export function receivePolls (polls) {
   return {
     type: RECEIVE_POLLS,
-    polls
+    polls,
   }
 }

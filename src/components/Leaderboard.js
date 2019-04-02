@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 
 function Leaderboard ({users}) {
@@ -19,6 +19,7 @@ function Leaderboard ({users}) {
   )
 }
 
+//Redux store
 function mapStateProps ({ users }) {
   return {
     users: Object.keys(users)
